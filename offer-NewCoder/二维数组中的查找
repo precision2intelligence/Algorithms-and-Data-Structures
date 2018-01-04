@@ -1,0 +1,28 @@
+# -*- coding:utf-8 -*-
+class Solution:
+    # array 二维列表
+    def Find(self, target, array):
+        # write code here
+        flag = 'false'
+        row=0
+        col=len(array[0])-1
+        while (row<=len(array)-1) and (col>=0):#不加while的括号可以提高运行速度
+             if array[row][col]==target:
+                flag = 'true'
+                return flag
+             elif array[row][col]>target:
+                col=col-1
+             else :
+                row=row+1
+        return flag
+
+while True:
+    try:
+        S=Solution()
+        # 字符串转为list
+        L=list(eval(raw_input()))
+        array=L[1]
+        target=L[0]
+        print(S.Find(target, array))
+    except:
+        break
