@@ -26,3 +26,36 @@ while True:
         print(S.Find(target, array))
     except:
         break
+
+
+
+#我写的另一个程序，没有调通
+# -*- coding:utf-8 -*-
+class Solution:
+    # array 二维列表
+    def Find(self, target, array):
+        # write code here
+        flag='false'
+        row=len(array)-1
+        col=0
+        if (row>=0) and (col>=0):
+            for x in array[row][col::]:
+                if x==target:
+                    flag='true'
+                    return flag
+                elif x>target:
+                     row=row-1
+                else: 
+                     col=col-1
+        return flag
+
+while True:
+    try:
+        number=input()
+        a=number[0]
+        b=number[1]
+        f=Solution()
+        print f.Find(a,b)
+    except:
+        break
+
