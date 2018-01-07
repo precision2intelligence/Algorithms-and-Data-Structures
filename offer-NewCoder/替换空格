@@ -1,0 +1,31 @@
+# -*- coding:utf-8 -*-
+class Solution:
+    # s 源字符串
+    def replaceSpace(self, s):
+        # write code here
+        s=s.replace(' ','%20')    #如果不写“s=”，则出错。说明使用函数后会新得到一个字符串但是不覆盖原来的，而s的内容是不变的
+        return s
+        
+        
+        
+ #一个错误的程序
+ class Solution:
+    # s 源字符串
+    def replaceSpace(self, s):
+        # write code here
+        for x in s[len(s)-1]:
+            if x==' ':
+                x='%20'
+        return s
+        
+        
+        
+#另一个错误的程序
+class Solution:
+    # s 源字符串
+    def replaceSpace(self, s):
+        # write code here
+        for x in s:
+            if x==' ':
+                x='%20'
+        return s
