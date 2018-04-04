@@ -7,25 +7,13 @@ class Solution:
         return s
         
         
-        
- #一个错误的程序
+ #错误的写法       
  class Solution:
     # s 源字符串
     def replaceSpace(self, s):
         # write code here
-        for x in s[len(s)-1]:
+        for x in s:#字符串可以一个一个取字符出来
             if x==' ':
-                x='%20'
-        return s
-        
-        
-        
-#另一个错误的程序
-class Solution:
-    # s 源字符串
-    def replaceSpace(self, s):
-        # write code here
-        for x in s:
-            if x==' ':
-                x='%20'
+                x='20%'#x只是一个变量，无法赋值回去，可以查看，但不是对原内容的操作了
+                #这里只能查看，这是新定义的变量
         return s
