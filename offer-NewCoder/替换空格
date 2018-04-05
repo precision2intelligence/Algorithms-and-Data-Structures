@@ -8,6 +8,14 @@ class Solution:
         return s
         
         
+ # -*- coding:utf-8 -*-
+class Solution:
+    # s 源字符串
+    def replaceSpace(self, s):
+        # write code here
+        return s.replace(' ','%20')#直接写两行代码就OK，这是自带的函数，return结果就好
+        
+        
  #错误的写法       
  class Solution:
     # s 源字符串
