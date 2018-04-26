@@ -1,0 +1,47 @@
+def simplifyPath(path):#比较全面的考虑
+        # Write your code here
+        if path == None:#为空跳出
+            return None
+        p = path.split("/")
+        stack = []
+        for s in p:#p已经是一个数组了，数组无下标也可以遍历。但在排序中经常要计数，所以不采用
+            if s == '.' or len(s)==0:
+                continue#代替一条执行语句
+            elif s == '..':
+                if len(stack)!=0:
+                    stack.pop()#FILO
+            else:
+                stack.append(s)
+        res = ""#创建一个字符串
+        if len(stack)==0:#考虑进去/./././.的情况了
+            return "/"
+        for i in stack:#依旧不是计数，直接遍历
+            res += "/"+i#字符串的填充
+        return res 
+        
+        
+        
+        
+        _____________________________________2nd_________________________________________
+        
+        def simplifyPath(path):
+        # Write your code here
+        if path == None:
+            return None
+        p = path.split("/")
+        stack = []
+        for s in p:
+            if s == '.' or len(s)==0:
+                continue
+            elif s == '..':
+                if len(stack)!=0:
+                    stack.pop()
+            else:
+                stack.append(s)
+        res = ""
+        if len(stack)==0:
+            return "/"
+        for i in stack:
+            res += "/"+i
+        return res 
+        
