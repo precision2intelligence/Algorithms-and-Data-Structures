@@ -1,7 +1,7 @@
-def pow(x,n):
+def pow(x,n):#
     if n==0:
         return 1
     t=pow(x,n//2)
-    if n%2==1:
+    if n%2==1:#把内部的程序当成是最后深度的递归就可以理解了
         return x*t*t
     return t*t
