@@ -1,0 +1,26 @@
+class Solution:
+    def simplifyPath(self, path):
+        """
+        :type path: str
+        :rtype: str
+        """
+        if path == None:
+            return None
+        p=path.split('/')
+        stack = []
+        for s in p:
+            if s == '.'or s =='':#split分开///的时候，中间两个空位占计数，但是不是空格！不是空格！也就是两个单引号之间没有空格
+                continue
+            elif s == '..':
+                if len(stack)>=1:#如果是/../../..的情况，从空的栈里跳出是有错误的。这里如果为空是不操作的，然后比较后面的，最后整个为空了就返回'/'
+                    stack.pop()
+            else:
+                stack.append(s)
+        if len(stack) == 0:#如果测试用例是/./..类似的，即使为空，也需返回'/'
+            return '/'
+        else:
+            res = ''
+            for i in stack:
+                res+= '/'+i
+            return res
+            
