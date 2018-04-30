@@ -1,0 +1,7 @@
+def pow(x,n):
+    if n==0:
+        return 1
+    t=pow(x,n//2)
+    if n%2==1:
+        return x*t*t
+    return t*t
