@@ -1,3 +1,7 @@
+###I finally realize that the 'col=len(array[0])-1' means that the 0th row and array[a][b] means the ath row and bth colume separately.
+
+
+
 # -*- coding:utf-8 -*-
 class Solution:
     # array 二维列表
