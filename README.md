@@ -1,6 +1,6 @@
 ﻿Algorithms and Data Structures
 =========
-## 语言##
+## 语言 ##
 
 > Python: 3  
 
