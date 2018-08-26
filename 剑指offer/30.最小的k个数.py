@@ -10,7 +10,7 @@ def GetLeastNumbers_QuickSort_partion(lists, left, right):
         while left < right and lists[left] <= key:
             left += 1
         lists[right] = lists[left]
-    lists[right] = key
+    lists[left] = key
     return left
 
 
@@ -79,9 +79,9 @@ class Solution(object):
 
 if __name__ == "__main__":
     s = Solution()
-    nums = [1,1,6,4,11,9,2,10,3]
-    res1 = s.GetLeastNumbers_Heap(nums,6)
+    nums = [11,1,6,4,11,9,2,10,3]
+    res1 = s.GetLeastNumbers_Heap(nums,7)
     res2 = s.GetLeastNumbers_SimpleHeap(nums,4)
-    res3 = s.GetLeastNumbers_QuickSort(nums,5)
+    res3 = s.GetLeastNumbers_QuickSort(nums,7)
     res4 = s.GetLeastNumbers_Bubble(nums, 7)
     print(res1,res2,res3,res4)
