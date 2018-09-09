@@ -3,6 +3,19 @@
 #dfs思路是：写主函数需要什么，给一个入口函数；然后再定义这个需求（很多不需要中途返回，只要结尾定义就好，本题就是）
 #弄清strings传进来的是同一个
 
+# Given a digit string, return all possible letter combinations that the number could represent.
+#
+# A mapping of digit to letters (just like on the telephone buttons) is given below.
+#
+# lookup = ["", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"]
+#
+# Input:Digit string "23"
+# Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+# Note:
+# Although the above answer is in lexicographical order, your answer could be in any order you want.
+#
+
+
 class Solution:
     def letterCombinations(self, digits):
         """

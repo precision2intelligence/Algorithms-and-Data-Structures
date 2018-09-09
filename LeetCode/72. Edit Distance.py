@@ -6,6 +6,15 @@
 #初始化表格的时候用列表生成式，因为复制会导致一个位置变动对应位置全部变动。
 #word1作为行，word2作为列。顺序颠倒容易索引出错。
 
+# Given two words word1 and word2, find the minimum number of steps
+# required to convert word1 to word2. (each operation is counted as 1 step.)
+#
+# You have the following 3 operations permitted on a word:
+#
+# a) Insert a character
+# b) Delete a character
+# c) Replace a character
+#
 
 class Solution:
 

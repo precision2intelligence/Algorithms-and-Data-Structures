@@ -1,3 +1,8 @@
+# You are climbing a stair case. It takes n steps to reach to the top.
+#
+# Each time you can either climb 1 or 2 steps.
+# In how many distinct ways can you climb to the top?
+
 #这里和编辑距离一样，是定义一个空表格计算距离，所以一定要初始化list为0
 #定义的dp[i]是第i个字符的步数，而不是i-1,边界要清楚
 #虽然是动规，考虑最后一步，要从前面写
