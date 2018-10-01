@@ -1,5 +1,10 @@
 #return处的判断条件可借鉴
 
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
 #解法一：
 #双指针，快的先走k-1步，然后快慢一起走，快的到达末尾的时候，慢的就是倒数第k个，只遍历一遍
 #不太懂为什么先走k-1步而代码是k步
