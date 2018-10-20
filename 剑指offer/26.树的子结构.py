@@ -8,6 +8,7 @@
 #
 # ③如果当前点相同，那同时看一下左子树和右子树的情况。
 
+# -*- coding:utf-8 -*-
 # class TreeNode:
 #     def __init__(self, x):
 #         self.val = x
@@ -16,20 +17,14 @@
 class Solution:
     def HasSubtree(self, pRoot1, pRoot2):
         # write code here
-        result = False
-        if pRoot1 != None and pRoot2 != None:
-            if pRoot1.val == pRoot2.val:
-                result = self.has2tree( pRoot1, pRoot2)
-            if not result:
-                result = self.HasSubtree(pRoot1.left, pRoot2)
-            if not result:
-                result = self.HasSubtree(pRoot1.right, pRoot2)
-        return result
-    def has2tree(self, pRoot1, pRoot2):
-        if pRoot2 == None:
-            return  True
-        if pRoot1 == None:
-            return  False
-        if pRoot1.val != pRoot2.val:
+        if not pRoot1 or not pRoot2:
             return False
-        return self.has2tree(pRoot1.left,pRoot2.left) and self.has2tree(pRoot1.right , pRoot2.right)
+        return self.is_subtree(pRoot1, pRoot2) or self.HasSubtree(pRoot1.left, pRoot2) or self.HasSubtree(pRoot1.right,
+                                                                                                          pRoot2)
+
+    def is_subtree(self, A, B):
+        if not B:
+            return True
+        if not A or A.val != B.val:
+            return False
+        return self.is_subtree(A.left, B.left) and self.is_subtree(A.right, B.right)
