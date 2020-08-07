@@ -1,6 +1,10 @@
 // Time: O(n)
 // Space: O(1)
 
+// 运行时间：2ms
+
+// 占用内存：1044k
+
 /*
 牛客上要求索引顺序递增。
 
@@ -19,8 +23,8 @@ Output: index1=1, index2=2
 func twoSum(numbers []int, target int) []int {
 	hash := make(map[int]int, len(numbers))
 	for k, v := range numbers {
-		if v, ok := hash[target-v]; ok {
-			return []int{v + 1, k + 1}
+		if idx, ok := hash[target-v]; ok { //golang字典检索用新变量
+			return []int{idx + 1, k + 1}
 		}
 		hash[v] = k
 	}
