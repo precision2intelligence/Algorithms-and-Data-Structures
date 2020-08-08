@@ -20,11 +20,11 @@ Output: index1=1, index2=2
 
 // 如果字符串有序，则双指针。167题
 
-func twoSum(numbers []int, target int) []int {
-	hash := make(map[int]int, len(numbers))
-	for k, v := range numbers {
+func twoSum(nums []int, target int) []int {
+	hash := make(map[int]int, len(nums))
+	for k, v := range nums {
 		if idx, ok := hash[target-v]; ok { //golang字典检索用新变量
-			return []int{idx + 1, k + 1}
+			return []int{idx, k}
 		}
 		hash[v] = k
 	}
