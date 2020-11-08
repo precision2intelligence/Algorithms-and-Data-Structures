@@ -6,6 +6,13 @@
 // 偶数索引与后面不等，则异常数就是当前或者左侧，右边界左移
 
 /*
+边界是难点：
+for l < r，则后面不用限制mid+1会超过len(nums)
+l<=r，这里要写case验证是否需要等于
+总之二分问题多写case，不要盲目加限制条件
+*/
+
+/*
 You are given a sorted array consisting of only integers where every element appears exactly twice, except for one element which appears exactly once. Find this single element that appears only once.
 
 Follow up: Your solution should run in O(log n) time and O(1) space.
