@@ -2,7 +2,8 @@
 # Space:O(Ckn)
 
 # 回溯，剪枝为后面的数是下次遍历的上界
-# 思路是对的，但是还是比较慢，不知道原因
+# 不需要visited，顺序遍历就行，没有“不重”限制
+
 '''
 Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
 
@@ -42,17 +43,17 @@ class Solution(object):
         :type k: int
         :rtype: List[List[int]]
         """
-        visited = [False for _ in range(n)]
+        # visited = [False for _ in range(n)]
         res = list()
-        self.backtrack(res, [], 1, k, visited, n)
+        self.backtrack(res, [], 1, k, n)
         return res
-    def backtrack(self, res, path, id, k, visited, n): # 这里没有当前数的验证
+    def backtrack(self, res, path, id, k, n): # 这里没有当前数的验证
         if len(path) == k:
             res.append(path)
             return
         for i in range(id, n+1): # 每次都重新遍历
-            if visited[i-1]:
-                continue
-            visited[i-1] = True
-            self.backtrack(res, path+[i], i+1, k, visited, n)
-            visited[i-1] = False
+            # if visited[i-1]:
+            #     continue
+            # visited[i-1] = True
+            self.backtrack(res, path+[i], i+1, k, n)
+            # visited[i-1] = False
