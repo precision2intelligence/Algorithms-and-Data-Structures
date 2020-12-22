@@ -1,5 +1,7 @@
 #Time: O(m+n)
 #Space: O(1)
+
+# 统计两个链表的长度，去掉长列表的长度，然后遍历知道找到相同的节点
 '''
 Write a program to find the node at which the intersection of two singly linked lists begins.
 
