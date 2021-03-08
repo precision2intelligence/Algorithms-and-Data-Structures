@@ -28,7 +28,7 @@ Constraints:
 '''
 
 '''
-1. 只用了col，dia1和dia2的一维数组存储结果
+1. 只用了col，dia1和dia2的一维数组存储结果，正对角线上：row-col相同；反对角线：row+col相等
 2. 遍历的是行——>列，变量比较特殊
 3. 最后append方法，建议在generateAns以外
 4. 注意ans形式
