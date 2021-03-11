@@ -32,12 +32,12 @@ class Solution(object):
         """
         palindrome = ''
         for i in range(len(s)):
-            len1 = len(self.getlongestpalindrome(s, i, i))  # len1是中间是单一字母的回文数
-            if len1 > len(palindrome):
-                palindrome = self.getlongestpalindrome(s, i, i)
-            len2 = len(self.getlongestpalindrome(s, i, i + 1))  # len2是中间是和后面一个字母相同的回文数
-            if len2 > len(palindrome):
-                palindrome = self.getlongestpalindrome(s, i, i + 1)
+            s1 = self.getlongestpalindrome(s, i, i)  # s1是中间是单一字母的回文串
+            if len(s1) > len(palindrome):
+                palindrome = s1
+            s2 = self.getlongestpalindrome(s, i, i + 1)  # len2是中间是和后面一个字母相同的回文数
+            if len(s2) > len(palindrome):
+                palindrome = s2
         return palindrome
 
 
