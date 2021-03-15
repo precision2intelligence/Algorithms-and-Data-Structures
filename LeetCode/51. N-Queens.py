@@ -1,6 +1,8 @@
 # Time:  O(n!) n是皇后数量
 # Space: O(n)
 
+# labuladong 回溯模板
+
 '''
 The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.
 
@@ -30,11 +32,8 @@ Constraints:
 '''
 1. 只用了col，dia1和dia2的一维数组存储结果，正对角线上：row-col相同；反对角线：row+col相等
 2. 遍历的是行——>列，变量比较特殊
-3. 最后append方法，建议在generateAns以外
-4. 注意ans形式
+3. 注意ans形式，可以由列表转字符串，因为字符串不支持直接赋值
 '''
-
-
 
 class Solution(object):
     def solveNQueens(self, n):
@@ -42,34 +41,34 @@ class Solution(object):
         :type n: int
         :rtype: List[List[str]]
         """
-        queens = [0 for _ in range(n)]
-        col, dia1, dia2 = set(), set(), set()
-        res = list()
-        self.backtrack(res, n, queens, col, dia1, dia2, 0)
-        return res
-    def backtrack(self, res, n, queens, col, dia1, dia2, begin):
-        if begin == n:
-            board = self.generateAns(res, n, queens)
-            res.append(board)
-            return res
-        else:
-            for i in range(n):
-                if i in col or begin - i in dia1 or begin + i in dia2:
-                    continue
-                queens[begin] = i
-                col.add(i)
-                dia1.add(begin - i)
-                dia2.add(begin + i)
-                self.backtrack(res, n, queens, col, dia1, dia2, begin+1)
-                # queen.remove(begin)
-                col.remove(i)
-                dia1.remove(begin - i)
-                dia2.remove(begin + i)
-
-    def generateAns(self, res, n, queen):
-        # ans形式
-        ans = [['.' for _ in range(n)] for _ in range(n)]
-        for i in range(n):
-            ans[i][queen[i]] = 'Q'
-            ans[i] = ''.join(ans[i])
+        res = []
+        colSet, dia1, dia2 = set(), set(), set()
+        backtrack(res, [], n, 0, colSet, dia1, dia2)
+        ans = mkres(res, n)
         return ans
+def backtrack(res, path, n, begin, colSet, dia1, dia2):
+    if begin == n:
+        res.append(path[:])
+
+    for col in range(n):
+        if col not in colSet and (begin - col) not in dia1 and (begin + col) not in dia2:
+            path.append(col)
+            colSet.add(col)
+            dia1.add(begin-col)
+            dia2.add(begin+col)
+            backtrack(res, path, n, begin+1, colSet, dia1, dia2)
+            path.pop()
+            colSet.remove(col)
+            dia1.remove(begin-col)
+            dia2.remove(begin+col)
+
+def mkres(res, n):
+    m = len(res)
+    ans = []
+    for i in range(m):
+        labels = [['.' for _ in range(n)] for _ in range(n)]
+        for j, idx in enumerate(res[i]):
+            labels[j][idx] = "Q"
+            labels[j] = ''.join(labels[j])
+        ans.append(labels[:])
+    return ans

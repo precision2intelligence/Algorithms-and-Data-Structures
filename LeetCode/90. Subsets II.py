@@ -1,6 +1,8 @@
 # Time : O(2^n*2^n)=O(2^(n+1)), 个人答案，每个位置都判断是否包含某个元素，且子集有2^n-1个
 # Space ： O((2^n-1)*n) 个人理解，所有子集，最多包含n个元素，是个松上界
 
+# labuladong模板法，res.append(path[:]) 一定加冒号
+
 '''
 总之：return结束方法；continue结束本次循环，循环还将继续；break跳出所有循环，方法继续
 ------------------------------return--------------------------------------
@@ -43,20 +45,18 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        res = []
         nums.sort()
-        visited = [False for _ in range(len(nums))]
-        self.backtrack(res, [], nums, visited, 0)
+        res = []
+        backtrack(res, [], nums)
         return res
-    def backtrack(self, res, path, nums, visited, begin):
-        res.append(path)
-        for i in range(begin, len(nums)):
-            # 限制了begin，有没有都可以了，但是没有会变慢，不理解
-            # if visited[i]:
-            #     return
-            if i > 0 and nums[i] == nums[i-1] and not visited[i-1]:
-                continue # 这里原本是return，应该改成continue，不然i在更高层退出后不再遍历后面的
-            visited[i] = True
-            self.backtrack(res, path + [nums[i]], nums, visited, i+1)
-            visited[i] = False
 
+def backtrack(res, path, selects):
+    # why??? res.append(path)不对
+    res.append(path[:])
+    for i in range(len(selects)):
+        if i > 0 and selects[i] == selects[i-1]:
+            continue
+        else:
+            path.append(selects[i])
+            backtrack(res, path, selects[i+1:])
+            path.pop()

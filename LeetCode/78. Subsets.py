@@ -1,6 +1,4 @@
-#注意python的list用法，含错误
-#dfs，这里没给终止条件，因为内部有for i in range().
-#把dfs的第一步想清楚就好了
+# 用labuladong模板做，凡是回溯添加路径都是加冒号，即 res.append(path[:])
 
 # Given a set of distinct integers, S, return all possible subsets.
 #
@@ -28,15 +26,19 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        m = len(nums)
-        res = [[]]
-        for i in range(m):
-            newarr = []
-            dfs(newarr, res, i, m, nums)
+        res = []
+        # 进入回溯算法
+        backtrack(res, [], nums)
         return res
 
-def dfs(newarr, res, i, m, nums):
-    newarr = newarr + [nums[i]]
-    res.append(newarr)
-    for j in range(i+1,m):
-        dfs(newarr, res, j, m, nums)
+def backtrack(res, path, selects):
+    # 添加路径
+    res.append(path[:])
+    # for 选择 in 选择列表
+    for i in range(len(selects)):
+        # 做出选择
+        path.append(selects[i])
+        # 回溯
+        backtrack(res, path, selects[i+1:])
+        # 回退选择
+        path.pop()
