@@ -36,8 +36,6 @@ class Solution(object):
         return res
 
 def dfs(newarr, res, i, m, nums):
-    if i == m:
-        return
     newarr = newarr + [nums[i]]
     res.append(newarr)
     for j in range(i+1,m):
