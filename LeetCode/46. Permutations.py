@@ -1,11 +1,7 @@
 # Time：O(n*n!)
 # Space:O(n) 递归深度，等于数组长度
 
-# 回溯法
-# 还是利用了python对数组操作的技巧：copy，remove，insert
-# remove和insert都是改变原数组的，返回为空，不要在赋值，赋值也为空
-# 注意跳出条件是nums长度为1，就可以往里面加入数字了
-
+# 注意，排列组合，得回头看
 '''
 Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
 
@@ -31,16 +27,21 @@ Constraints:
 -10 <= nums[i] <= 10
 All the integers of nums are unique.
 '''
-class Solution:
+class Solution(object):
     def permute(self, nums):
-        if len(nums) == 1:
-            return [nums]
-        res = list()
-        for num in nums:
-            tmpNum = nums.copy()
-            tmpNum.remove(num)
-
-            for item in self.permute(tmpNum):
-                item.insert(0, num)
-                res.append(item)
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        res = []
+        m  = len(nums)
+        self.backtrack(res, nums, [], m)
         return res
+    def backtrack(self, res, nums, path, m):
+        if len(path) == m:
+            res.append(path[:])
+        for i in range(m):
+            if nums[i] not in path:
+                path.append(nums[i])
+                self.backtrack(res, nums, path, m)
+                path.pop()
