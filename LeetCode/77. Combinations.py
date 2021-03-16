@@ -1,8 +1,7 @@
 # Time:O(kCkn) Ckn是构成的组合数，长度为k的组合添加入结果
 # Space:O(Ckn)
 
-# 回溯，剪枝为后面的数是下次遍历的上界
-# 不需要visited，顺序遍历就行，没有“不重”限制
+# 回溯，注意列表中的元素是从1开始的，不是0
 
 '''
 Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
@@ -35,7 +34,6 @@ Constraints:
 1 <= k <= n
 
 '''
-
 class Solution(object):
     def combine(self, n, k):
         """
@@ -43,17 +41,13 @@ class Solution(object):
         :type k: int
         :rtype: List[List[int]]
         """
-        # visited = [False for _ in range(n)]
-        res = list()
-        self.backtrack(res, [], 1, k, n)
+        res = []
+        self.backtrack(res, [], 1, n, k)
         return res
-    def backtrack(self, res, path, id, k, n): # 这里没有当前数的验证
+    def backtrack(self, res, path, begin, n, k):
         if len(path) == k:
-            res.append(path)
-            return
-        for i in range(id, n+1): # 每次都重新遍历
-            # if visited[i-1]:
-            #     continue
-            # visited[i-1] = True
-            self.backtrack(res, path+[i], i+1, k, n)
-            # visited[i-1] = False
+            res.append(path[:])
+        for i in range(begin,n+1):
+            path.append(i)
+            self.backtrack(res, path, i+1, n, k)
+            path.pop()
