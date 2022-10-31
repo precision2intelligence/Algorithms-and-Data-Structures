@@ -1,6 +1,6 @@
 # Time:  O(n)
 # Space: O(1)
-#需要证明：http://www.itbox.info/article/8462
+#需要证明：https://labuladong.github.io/algo/2/19/18/
 
 '''
 Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
