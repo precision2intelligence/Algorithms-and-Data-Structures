@@ -50,4 +50,4 @@ class Solution:
                 right = mid - 1
         if left > max(piles): return max(piles)
         if left < 1 : return 1
-        return left 
+        return left
