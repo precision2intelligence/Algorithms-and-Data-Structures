@@ -1,6 +1,7 @@
 # Time:O(N^2) 遍历和枚举的乘积
 # Space:O(n)  存储了排序后的数组
 # 先排序，再双指针
+# 关键在于去重，在移动指针的时候去重；特殊情况三数为0，则第一个数为0正常进行，否则都要跳过
 
 '''
 Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
@@ -36,25 +37,25 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        if len(nums) <= 2:
-            return []
-
-        res = []
-        # 注意这里，要得到返回值，才是排序后的数组
         nums = sorted(nums)
-        for i in range(len(nums) - 1):
-            total_sum = 0 - nums[i]
+        res = []
+        for i in range(len(nums)):
+            if nums[i] > 0:
+                return res
+            elif i > 0 and nums[i] == nums[i - 1]:
+                continue
             l, r = i + 1, len(nums) - 1
             while l < r:
-                if nums[l] + nums[r] == total_sum:
-                    ans = [nums[i], nums[l], nums[r]]
-                    # 这里有个去重，需要特别注意，还没想到好方法
-                    if ans not in res:
-                        res.append([nums[i], nums[l], nums[r]])
+                if nums[i] + nums[l] + nums[r] == 0:
+                    res.append([nums[i], nums[l], nums[r]])
+                    while l < r and nums[l] == nums[l + 1]:
+                        l += 1
+                    while l < r and nums[r] == nums[r - 1]:
+                        r -= 1
                     l += 1
                     r -= 1
-                elif nums[l] + nums[r] < total_sum:
-                    l += 1
-                elif nums[l] + nums[r] > total_sum:
+                elif nums[i] + nums[l] + nums[r] > 0:
                     r -= 1
+                else:
+                    l += 1
         return res
